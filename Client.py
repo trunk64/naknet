@@ -65,7 +65,7 @@ class Bot:
       print('Connected to Master: ' + str(address))
 
       # perform handshake with master to confirm it is the correct master
-      print('Authenticating Master...'
+      print('Authenticating Master...')
 
       recvdStr = Util.recieve(connection)
 
