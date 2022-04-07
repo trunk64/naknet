@@ -16,7 +16,7 @@ when to attack and the difference between the Bot and Master (if any)
 """
 class Bot:
    def __init__(self):
-      print 'Initializing Bot...\n'
+      print('Initializing Bot...\n')
 
       signal.signal(signal.SIGINT, self.shutdown)
 
@@ -30,7 +30,7 @@ class Bot:
       self.botServerSocket.bind((socket.gethostname(), port))
       self.botServerSocket.listen(1)
 
-      print 'Bot socket created'
+      print('Bot socket created')
 
       # listen for master and perform authentication
       self.master = None
@@ -59,13 +59,13 @@ class Bot:
    """
    def listenForMaster(self):
       # blocks until client connects
-      print 'Listening for Master on port', port, '...\n'
+      print('Listening for Master on port', port, '...\n')
       connection, address = self.botServerSocket.accept()
       
-      print 'Connected to Master: ' + str(address)
+      print('Connected to Master: ' + str(address))
 
       # perform handshake with master to confirm it is the correct master
-      print 'Authenticating Master...'
+      print('Authenticating Master...'
 
       recvdStr = Util.recieve(connection)
 
@@ -73,11 +73,11 @@ class Bot:
       if recvdStr != Util.MASTER_PASSPHRASE:
          # not master
          connection.close()
-         print 'Stranger tried to connect!'
+         print('Stranger tried to connect!')
          return (True, None)
 
       # was master, send bot passphrase
-      print 'Master Authenticated\n'
+      print('Master Authenticated\n')
       Util.send(connection, Util.BOT_PASSPHRASE)
 
       return (False, connection)
@@ -88,36 +88,36 @@ class Bot:
    def attack(self, target, atkTime):
       atkTimeStr = Util.formatTimeMS(atkTime)
 
-      print 'Going to attack Target @ %s:%d on ' \
-         % (target[0], target[1]) + atkTimeStr + '\n'
+      print('Going to attack Target @ %s:%d on ' \
+         % (target[0], target[1]) + atkTimeStr + '\n')
 
       # account for the time difference between bot and master
       waitTimeMilSecs = long(atkTime) -  (Util.getCurrTime() + offset)
 
       if waitTimeMilSecs < 0:
-         print 'Missed the attack :-(' 
+         print('Missed the attack :-(') 
          return
 
-      print 'Sleeping for [msec]: ', waitTimeMilSecs
+      print('Sleeping for [msec]: ', waitTimeMilSecs)
 
       # wait
       waitTimeSecs = float(waitTimeMilSecs)/1000
       time.sleep(waitTimeSecs)
 
       # wait complete, connect to target
-      print 'Connecting to Target @ %s:%d...' % (target[0], target[1])
+      print('Connecting to Target @ %s:%d...' % (target[0], target[1]))
       targetSocket = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
       targetSocket.connect((target[0], target[1]))
-      print 'Connected'
+      print('Connected')
 
       # perform attack for 30 seconds
       startTime = time.time()
       timeout = 30
-      print 'Attacking for', timeout, 'seconds...'
+      print('Attacking for', timeout, 'seconds...')
       while time.time() < startTime + timeout:
          time.sleep(rate) # send message every second
          Util.send(targetSocket, 'You\'re being attacked!!!')
-      print 'Attack finished'
+      print('Attack finished')
 
       targetSocket.close()
 
@@ -131,8 +131,8 @@ class Bot:
       if hasattr(self, 'botServerSocket') and self.botServerSocket != None:
          self.botServerSocket.close()
 
-      print '\nBot socket shut down'
-      print 'Bot shut down'
+      print('\nBot socket shut down')
+      print('Bot shut down')
 
       sys.exit(0)
 
