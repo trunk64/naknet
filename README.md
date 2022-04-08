@@ -1,3 +1,3 @@
 # naknet
 Tentatively a botnet.
-Code orignally sourced from py-botnet by farhan3
+Code orignally sourced from Aoyama by Leeon123
