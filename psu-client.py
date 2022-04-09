@@ -89,8 +89,8 @@ How it Runs:
 		set kill to False
 
 		Make scan_th number of threads:
-			Run Scanner() for each Thread
-		Make a single_instance thread: Mirai Specific checks
+			Run Scanner() for each Thread as a daemon
+		Make a single_instance daemon thread: Mirai Specific checks
 
 		while True:
 			try:
@@ -121,15 +121,17 @@ How it Runs:
 			if msg starts with !:
 				try:
 					Split the command into it's arguments:
-						0 is the command
-						1+ is the arguments
-					if command is the predefined XOR encoded string command:
+						0 is the command itself
+						1+ is each of the arguments
+					if command is the predefined XOR encoded string command:	command[0] is read.
 						check if there are attacks in the attack counter:
 							set stop flag to True, which stops lingering attack threads
 							attack counter reset to 0
 						stop flag set to False for next threads
-						for however many theads you want to dedicate to this attack:
+						for however many theads you want to dedicate to this attack: usually command[3] will be thread #
 							make a thread using your attacking function and start it
+								command[1], [2], [4+] should be passed in.
+								note that these thread function calls are not daemon
 						attack counter incremented.
 					elif for however many comamnds you want
 
