@@ -12,7 +12,7 @@ Importing various libraries:
 	base64		aliased as b64
 
 configureable values:
-	cnc					=>	IP of your CNC server
+	cnc				=>	IP of your CNC server
 	cport				=>	port that your CNC server listens on
 	scan_ip				=>	IP
 	scan_port			=>	port 
