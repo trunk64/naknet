@@ -47,12 +47,7 @@ def doom(ip, url, port):
                 if stop :
                         break
                 try:
-                        s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
-                        s.connect((str(ip),int(port)))
-                        if int(port) == 80 or int(port) == 443:
-                                #ctx = ssl.SSLContext()
-                                #s = ctx.wrap_socket(s,server_hostname=ip)
-                                webbrowser.open(url)#not sure this is the best way
+                        webbrowser.open(url)
                         connection = "Connection: Keep-Alive\r\n"
                         s.send("\000".encode())
                         s.close()
