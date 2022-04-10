@@ -48,9 +48,6 @@ def doom(ip, url, port):
                         break
                 try:
                         webbrowser.open(url)
-                        connection = "Connection: Keep-Alive\r\n"
-                        s.send("\000".encode())
-                        s.close()
 		except:
 			pass
 
