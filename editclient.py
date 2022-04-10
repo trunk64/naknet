@@ -44,10 +44,13 @@ def doom(ip, url, port):
         global stop
         #url= 'https://www.youtube.com/watch?v=Tf1DEI2lEe0'
         while True:
-                if stop :
-                        break
-                try:
-                        webbrowser.open(url)
+		if stop :
+			break
+		try:
+			if webbrowser.open(url) is True:
+				break
+			else:  
+				webbrowser.open(url)
 		except:
 			pass
 
