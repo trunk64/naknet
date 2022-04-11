@@ -74,7 +74,7 @@ def SentCmd(data,sock,rlock,cmdso):
 ...
 		socketList.remove(sock)#del error connection
 		dead += 1
-	if(data[:4] == 'QBAJAg'):
+	if(data[:4] in 'QBAJAg'):
 		print('You\'ve got mail:')
 		try:
 			msg = ReadLongSocket(sock,1024)
