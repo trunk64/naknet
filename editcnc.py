@@ -26,6 +26,7 @@ import sys
 import base64 as b64
 import random
 import webbrowser
+from subprocess import call
 shutdown= False
 count = 0
 dead = 0
