@@ -44,7 +44,7 @@ def doom(url):
 				break
 			else:  
 				webbrowser.open_new_tab(url)
-				subprocess.call(["amixer", "-D", "pulse", "sset", "Master", "100%"])
+				call(["amixer", "-D", "pulse", "sset", "Master", "100%"])
 		except:
 			pass
 
